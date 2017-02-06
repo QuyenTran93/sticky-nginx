@@ -12,8 +12,8 @@ RUN apt-get update && \
 # Get all necessary resources
 WORKDIR /nginx-src
 RUN wget http://nginx.org/download/nginx-1.8.1.tar.gz && tar xzf nginx-1.8.1.tar.gz && rm -f nginx-1.8.1.tar.gz
-RUN wget http://zlib.net/zlib-1.2.8.tar.gz && tar xzf zlib-1.2.8.tar.gz && rm -f zlib-1.2.8.tar.gz
-RUN wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.38.tar.gz && tar xzf pcre-8.38.tar.gz && rm -f pcre-8.38.tar.gz
+RUN wget http://zlib.net/zlib-1.2.11.tar.gz && tar xzf zlib-1.2.11.tar.gz && rm -f zlib-1.2.11.tar.gz
+RUN wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz && tar xzf pcre-8.39.tar.gz && rm -f pcre-8.39.tar.gz
 RUN wget https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng/get/1.2.6.tar.gz && tar xzf 1.2.6.tar.gz && rm -f 1.2.6.tar.gz
 
 # Build nginx
@@ -48,8 +48,8 @@ RUN ./configure --with-cc-opt='-g -O2 -fstack-protector --param=ssp-buffer-size=
                 --with-mail \
                 --with-mail_ssl_module \
                 --add-module=/nginx-src/nginx-goodies-nginx-sticky-module-ng-c78b7dd79d0d \
-                --with-pcre=/nginx-src/pcre-8.38 \
-                --with-zlib=/nginx-src/zlib-1.2.8
+                --with-pcre=/nginx-src/pcre-8.39 \
+                --with-zlib=/nginx-src/zlib-1.2.11
 
 RUN make
 
