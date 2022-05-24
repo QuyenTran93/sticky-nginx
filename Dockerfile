@@ -11,13 +11,13 @@ RUN apt-get update && \
 
 # Get all necessary resources
 WORKDIR /nginx-src
-RUN wget http://nginx.org/download/nginx-1.8.1.tar.gz && tar xzf nginx-1.8.1.tar.gz && rm -f nginx-1.8.1.tar.gz
+RUN wget http://nginx.org/download/nginx-1.19.3.tar.gz && tar xzf nginx-1.19.3.tar.gz && rm -f nginx-1.19.3.tar.gz
 RUN wget http://zlib.net/zlib-1.2.11.tar.gz && tar xzf zlib-1.2.11.tar.gz && rm -f zlib-1.2.11.tar.gz
 RUN wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz && tar xzf pcre-8.39.tar.gz && rm -f pcre-8.39.tar.gz
 RUN wget https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng/get/1.2.6.tar.gz && tar xzf 1.2.6.tar.gz && rm -f 1.2.6.tar.gz
 
 # Build nginx
-WORKDIR /nginx-src/nginx-1.8.1/
+WORKDIR /nginx-src/nginx-1.19.3/
 RUN ./configure --with-cc-opt='-g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2' \
                 --with-ld-opt='-Wl,-Bsymbolic-functions -Wl,-z,relro' \
                 --prefix=/usr/share/nginx \
